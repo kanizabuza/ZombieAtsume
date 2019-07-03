@@ -41,7 +41,7 @@ public class ChangeCharacter : MonoBehaviour
             }
 
             //変換処理
-            charaLists[i].GetComponent<MeshRenderer>().enabled = flag;
+            //charaLists[i].AddComponent<>().enaled = flag;
         }
         nowPlayer = nextPlayer;
     }
