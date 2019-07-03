@@ -6,14 +6,15 @@ public class ChangeCharacter : MonoBehaviour
 {
     private int nowPlayer;
 
-    [SerializeField] private List<GameObject> charaLists;
+    [SerializeField]
+    private List<GameObject> charaLists;
 
-    private void Start() {
+    void Start() {
         nowPlayer = charaLists.Count;
         ChangePlayer(nowPlayer);
     }
 
-    private void Update() {
+    void Update() {
         if (Input.GetKeyDown("q")){
             ChangePlayer(nowPlayer);
         }
@@ -41,7 +42,7 @@ public class ChangeCharacter : MonoBehaviour
             }
 
             //変換処理
-            charaLists[i].GetComponent<MeshRenderer>().enabled = flag;
+            charaLists[i].GetComponent<PlayerTest>().ChangeControl(flag);
         }
         nowPlayer = nextPlayer;
     }
