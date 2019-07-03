@@ -32,14 +32,17 @@ public class Player : MonoBehaviour
         moveX = Input.GetAxis("Horizontal") * speed;
         moveZ = Input.GetAxis("Vertical") * speed;
         Vector3 direction = new Vector3(moveX, 0, moveZ);
-
+        Debug.Log("1");
         if (moveX != 0 || moveZ != 0)
         {
+            Debug.Log("2");
             anim.SetBool("Walk", true);
         }
 
-        anim.SetBool("Walk", false);
-
+        else
+        {
+            anim.SetBool("Walk", false);
+        }
         if (Input.GetMouseButtonDown(0))
         {
             anim.SetTrigger("Attack");
