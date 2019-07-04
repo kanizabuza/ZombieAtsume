@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     float moveX = 0f;
     float moveZ = 0f;
     float time = 0;
+    private GameObject obj = null;
 
     int attackflag = 0;
     public int destroyflag = 0;
@@ -40,15 +41,18 @@ public class Player : MonoBehaviour
         time += Time.deltaTime;
         if(attackflag == 1)
         {
-            if (time < 10f && destroyflag == 1)
+            Debug.Log(time + "time");
+           if (time< 2.5f )
             {
                 burnflag = 1;
-
+                
             }
-            else
-            {
-                attackflag = 0;
-                burnflag = 0;
+            else { 
+          
+                
+             burnflag = 0;
+             attackflag = 0;
+             time = 0;
             }
         }
         if (moveX != 0 || moveZ != 0)
@@ -68,8 +72,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        obj = other.gameObject;
+    }
 
-    public void Burn(Collider obj)
+    public void Burn()
     {
         Debug.Log(burnflag);
         Debug.Log("10");
@@ -77,10 +85,12 @@ public class Player : MonoBehaviour
 
         if (burnflag == 1 && attackflag == 1)
         {
-            Debug.Log("3");
+          
             Destroy(obj);
+
         }
-        destroyflag = 0;
+        burnflag = 0;
+        attackflag = 0;
 
     }
     private void FixedUpdate()

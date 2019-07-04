@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Human : MonoBehaviour
 {
+
+
     public Player playersc;
     // Start is called before the first frame update
     void Start()
@@ -23,9 +25,10 @@ public class Human : MonoBehaviour
         if (other.tag == "attack")
         {
             Debug.Log("1");
-            playersc.destroyflag = 1;
 
-            playersc.Burn(other);
+          
+            playersc.Burn();
         }
+        
     }
 }
