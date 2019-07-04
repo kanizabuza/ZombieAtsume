@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerTest : MonoBehaviour
 {
     private bool isControl;
+    private int zombieHP = 100;
 
     void Update() {
 
