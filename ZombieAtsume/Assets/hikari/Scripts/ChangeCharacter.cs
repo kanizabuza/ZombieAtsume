@@ -1,17 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChangeCharacter : MonoBehaviour
 {
     private int nowPlayer;
+    private GameObject mCamera;
+    public GameObject gameOverUI;
 
     [SerializeField]
     private List<GameObject> charaLists;
 
+    private AudioSource aSource;
+    public AudioClip aClip;
+
     void Start() {
         nowPlayer = charaLists.Count;
         ChangePlayer(nowPlayer);
+        mCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
+        aSource = GetComponent<AudioSource>();
+        aSource.clip = aClip;
+        gameOverUI.SetActive(false);
     }
 
     void Update() {
@@ -19,10 +30,7 @@ public class ChangeCharacter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)){
             ChangePlayer(nowPlayer);
         }*/
-        if (charaLists.Count == 0)
-        {
-            Debug.Log("te");
-        }
+
     }
 
     void ChangePlayer(int tempNowPlayer) {
@@ -63,6 +71,14 @@ public class ChangeCharacter : MonoBehaviour
         ChangePlayer(nowPlayer);
         Destroy(charaLists[tempPlayer]);
         charaLists.RemoveAt(tempPlayer);
+
+        aSource.Stop();
+        aSource.Play();
+        if (charaLists.Count == 0)
+        {
+            gameOverUI.SetActive(true);
+            Destroy(mCamera.GetComponent<MainCamera>());
+        }
     }
 
     public int GetPlayerNumber() {
