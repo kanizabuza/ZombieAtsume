@@ -1234,7 +1234,7 @@ Animator:
   m_GameObject: {fileID: 5434131052876926640}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fe2eb0b4e90413643a3ddc78c368140f, type: 3}
-  m_Controller: {fileID: 9100000, guid: 367849e88f86d8c4984fbe06f82e2629, type: 2}
+  m_Controller: {fileID: 9100000, guid: ea5fc30e4a4c00a47a688811d48e735d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1300,7 +1300,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+  Zombie: {fileID: 0}
   destroyflag: 0
+  avoidhuman: {fileID: 0}
 --- !u!1 &5434150288789674656
 GameObject:
   m_ObjectHideFlags: 0
