@@ -267,20 +267,20 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 367849e88f86d8c4984fbe06f82e2629, type: 2}
-    - target: {fileID: 6929245437547143081, guid: 4bfd57303d94e7442a94096d856ec33d,
+    - target: {fileID: 8882223320995909226, guid: 4bfd57303d94e7442a94096d856ec33d,
         type: 3}
-      propertyPath: m_IsActive
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1771950205405137400, guid: 4bfd57303d94e7442a94096d856ec33d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1771950205405137400, guid: 4bfd57303d94e7442a94096d856ec33d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3320938208516396108, guid: 4bfd57303d94e7442a94096d856ec33d,
         type: 3}
@@ -869,6 +869,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 541448673567397998, guid: 95bce0d002171634690a672d0feefc92,
+        type: 3}
+      propertyPath: obj
+      value: 
+      objectReference: {fileID: 8883176450707064843, guid: 4bfd57303d94e7442a94096d856ec33d,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95bce0d002171634690a672d0feefc92, type: 3}
 --- !u!1 &1443184387

@@ -18,7 +18,7 @@ public class HitBullet : MonoBehaviour
         //プレイヤかどうか確認
         if (other.tag == "Bullet")
         {
-            pTest.TakeDamage(50);
+            pTest.TakeDamage(100);
         }
     }
 }

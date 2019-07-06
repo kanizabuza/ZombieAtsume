@@ -15,8 +15,13 @@ public class ChangeCharacter : MonoBehaviour
     }
 
     void Update() {
+        /*
         if (Input.GetKeyDown(KeyCode.Space)){
             ChangePlayer(nowPlayer);
+        }*/
+        if (charaLists.Count == 0)
+        {
+            Debug.Log("te";)
         }
     }
 
