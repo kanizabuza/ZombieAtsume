@@ -8,6 +8,7 @@ TagManager:
   - attack
   - Collide
   - Zombie
+  - Bullet
   layers:
   - Default
   - TransparentFX

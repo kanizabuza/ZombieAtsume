@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class PlayerTest : MonoBehaviour
 {
+    public ChangeCharacter cChara;
     private Image fillImg;
     private Color fullHpColor = Color.green;
     private Color zeroHpColor = Color.red;
@@ -16,6 +17,8 @@ public class PlayerTest : MonoBehaviour
     private Slider hpSlider;
 
     private void Start() {
+        zombieHp = maxHp;
+        cChara = GameObject.Find("ChangePlayer").GetComponent<ChangeCharacter>();
         hpSlider = GetComponentInChildren<Slider>();
         fillImg = hpSlider.image;
     }
@@ -31,16 +34,18 @@ public class PlayerTest : MonoBehaviour
 
         if(zombieHp <= 0f)
         {
-            OnDeath();
+            cChara.RemovePlayerZombie();
         }
     }
 
     private void SetHpUI() {
         hpSlider.value = zombieHp;
-        fillImg.color = Color.Lerp(zeroHpColor, fullHpColor, zombieHp / maxHp);
+        //fillImg.color = Color.Lerp(zeroHpColor, fullHpColor, zombieHp / maxHp);
     }
-
+    /*
     private void OnDeath() {
-        Destroy(this.gameObject);
-    }
+        int num = cChara.GetPlayerNumber();
+        Destroy(this.gameObject.transform.root.gameObject);
+        cChara.RemoveZombie(num);
+    }*/
 }
