@@ -7,7 +7,7 @@ public class Players : MonoBehaviour
     // Start is called before the first frame update
     Plane plane = new Plane();
     float distance = 0;
-    public float speed = 10f;
+    public float speed = 30f;
     float moveX = 0f;
     float moveZ = 0f;
     float time = 0;
@@ -37,8 +37,8 @@ public class Players : MonoBehaviour
 
         }
         moveX = Input.GetAxis("Horizontal") * speed;
-        moveZ = Input.GetAxis("Vertical") * speed;
-        Vector3 direction = new Vector3(moveX*5f, 0, moveZ*5f);
+        moveZ = Input.GetAxis("Vertical") * speed ;
+        Vector3 direction = new Vector3(moveX*10f, 0, moveZ*10f);
         time += Time.deltaTime;
         if (attackflag == 1)
         {
@@ -73,7 +73,7 @@ public class Players : MonoBehaviour
             anim.SetTrigger("Attack");
         }
 
-        rb.AddForce(moveX, 0f,moveZ);
+        rb.AddForce(moveX*5f, 0f,moveZ*5f);
 
     }
     private void OnTriggerEnter(Collider other)
