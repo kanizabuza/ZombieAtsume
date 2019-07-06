@@ -690,8 +690,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c480fbc8cf599448f0593e9c93ec4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrivedDistance: 1.5
-  followDistance: 1
+  arrivedDistance: 2
+  followDistance: 2.5
 --- !u!1 &1329085391
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,8 +1141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c480fbc8cf599448f0593e9c93ec4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrivedDistance: 1.5
-  followDistance: 1
+  arrivedDistance: 2
+  followDistance: 2.5
 --- !u!1001 &1704085195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1252,8 +1252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c480fbc8cf599448f0593e9c93ec4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrivedDistance: 1.5
-  followDistance: 1
+  arrivedDistance: 2
+  followDistance: 2.5
 --- !u!195 &1704085205
 NavMeshAgent:
   m_ObjectHideFlags: 0
