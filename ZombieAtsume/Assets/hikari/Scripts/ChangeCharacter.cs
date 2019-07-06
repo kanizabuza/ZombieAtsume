@@ -21,7 +21,7 @@ public class ChangeCharacter : MonoBehaviour
         }*/
         if (charaLists.Count == 0)
         {
-            Debug.Log("te";)
+            Debug.Log("te");
         }
     }
 
