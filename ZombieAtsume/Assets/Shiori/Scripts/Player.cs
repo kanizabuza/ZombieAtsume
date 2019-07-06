@@ -79,9 +79,7 @@ public class Player : MonoBehaviour
 
     public void Burn()
     {
-        Debug.Log(burnflag);
-        Debug.Log("10");
-        Debug.Log(attackflag);
+
 
         if (burnflag == 1 && attackflag == 1)
         {
