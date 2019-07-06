@@ -21,7 +21,7 @@ public class Human : MonoBehaviour
     float avoidtime = 0f;
     public Players playersc;
     private Vector3 angle;
-    Animator anim;
+    public Animator anim;
     private int attackflag = 0;
     // Start is called before the first frame update
     void Start()
@@ -122,9 +122,15 @@ public class Human : MonoBehaviour
         {
             Debug.Log("1");
 
-
+           
             playersc.Burn();
         }
+    }
+
+    public void Anim()
+    {
+        anim.SetBool("Down", true);
+        Destroy(this.gameObject, 3);
     }
 
     public void OnTriggerExit(Collider other)
