@@ -12,6 +12,7 @@ public class Players : MonoBehaviour
     float moveZ = 0f;
     float time = 0;
     private GameObject obj = null;
+    private Transform desobject;
 
     int attackflag = 0;
     public int destroyflag = 0;
@@ -86,7 +87,7 @@ public class Players : MonoBehaviour
 
         if (burnflag == 1 && attackflag == 1)
         {
-
+            desobject = obj.transform;
             Destroy(obj);
 
         }

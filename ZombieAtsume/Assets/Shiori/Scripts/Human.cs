@@ -45,7 +45,7 @@ public class Human : MonoBehaviour
 
             if(avoidtime < 0.8f)
             {
-                Debug.Log(avoidtime);
+              //  Debug.Log(avoidtime);
                 anim.SetBool("Idle", false);
                 anim.SetBool("Attack", true);
                if (maketime >= 0.4f)
