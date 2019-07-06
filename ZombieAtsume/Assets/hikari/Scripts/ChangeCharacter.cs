@@ -44,7 +44,9 @@ public class ChangeCharacter : MonoBehaviour
             }
 
             //変換処理
-            charaLists[i].GetComponent<PlayerTest>().ChangeControl(flag);
+            charaLists[i].GetComponent<FollowZombie>().ChangeControl(flag);
+
+            charaLists[i].GetComponent<Animator>().SetBool("Walk",!flag);
         }
         nowPlayer = nextPlayer;
     }

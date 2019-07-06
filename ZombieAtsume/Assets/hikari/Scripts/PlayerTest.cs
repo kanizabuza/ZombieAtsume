@@ -6,36 +6,41 @@ using UnityEngine.AI;
 
 public class PlayerTest : MonoBehaviour
 {
-    private bool isControl;
-    private int zombieHP = 100;
+    private Image fillImg;
+    private Color fullHpColor = Color.green;
+    private Color zeroHpColor = Color.red;
+    private int zombieHp;
+    private int maxHp = 100;
 
     private GameObject hpUI;
     private Slider hpSlider;
 
     private void Start() {
         hpSlider = GetComponentInChildren<Slider>();
+        fillImg = hpSlider.image;
     }
 
-    void Update() {
-
+    void LateUpdate() {
+        transform.rotation = Camera.main.transform.rotation;
     }
 
-    public void ChangeControl(bool flag) {
-        isControl = flag;
-        this.GetComponent<Animator>().enabled = flag;
+    public void TakeDamage(int damage) {
+        zombieHp -= damage;
 
-        //navemeshagent add
-        //players.enabled false
-        this.GetComponent<Players>().enabled = flag;
-        if (flag)
+        SetHpUI();
+
+        if(zombieHp <= 0f)
         {
-            this.GetComponent<NavMeshAgent>().enabled = false;
-            this.GetComponent<FollowZombie>().enabled = false;
+            OnDeath();
         }
-        else
-        {
-            this.GetComponent<NavMeshAgent>().enabled = true;
-            this.GetComponent<FollowZombie>().enabled = true;
-        }
+    }
+
+    private void SetHpUI() {
+        hpSlider.value = zombieHp;
+        fillImg.color = Color.Lerp(zeroHpColor, fullHpColor, zombieHp / maxHp);
+    }
+
+    private void OnDeath() {
+        Destroy(this.gameObject);
     }
 }
