@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class PlayerTest : MonoBehaviour
 {
-    public ChangeCharacter cChara;
+    private ChangeCharacter cChara;
     private Image fillImg;
     private Color fullHpColor = Color.green;
     private Color zeroHpColor = Color.red;

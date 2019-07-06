@@ -46,6 +46,7 @@ public class ChangeCharacter : MonoBehaviour
             //変換処理
             charaLists[i].GetComponent<FollowZombie>().ChangeControl(flag);
             charaLists[i].GetComponent<Animator>().SetBool("Walk",!flag);
+            charaLists[i].GetComponent<HitBullet>().enabled = flag;
         }
 
         nowPlayer = nextPlayer;
@@ -61,5 +62,9 @@ public class ChangeCharacter : MonoBehaviour
 
     public int GetPlayerNumber() {
         return nowPlayer;
+    }
+
+    public void AddList(GameObject obj) {
+        charaLists.Add(obj);
     }
 }
