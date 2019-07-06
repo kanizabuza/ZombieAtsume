@@ -31,31 +31,37 @@ public class Human : MonoBehaviour
             isRotation = true;
 
 
-            avoidtime += Time.deltaTime;
-
-            if (avoidtime < 5f)
+            avoidtime = Time.deltaTime;
+            Debug.Log(avoidtime);
+            if (avoidtime < 0.02f)
             {
-
-                //  Vector3 forward = new Vector3(transform.forward.x, -0.1f, transform.forward.z);
-                //anim.SetBool("Run", true);
-                moveSpeed = 3f;
-                transform.position += transform.forward * moveSpeed * 0.01f;
-
-
+                Attack();
             }
-
-            else
+            else if (avoidtime > 0.02f)
             {
-
                 avoidtime = 0;
-                //  isDetectPlayer = false;
-
-                //anim.SetBool("Run", false);
-                moveSpeed = 0.1f;
-                transform.position += transform.forward * moveSpeed * 0.01f;
-                isDetectPlayer = false;
-
             }
+
+            //  Vector3 forward = new Vector3(transform.forward.x, -0.1f, transform.forward.z);
+            //anim.SetBool("Run", true);
+            //moveSpeed = 3f;
+            //transform.position += transform.forward * moveSpeed * 0.01f;
+            
+            
+        }
+
+        else
+        {
+
+           // avoidtime = 0;
+            //  isDetectPlayer = false;
+
+            //anim.SetBool("Run", false);
+            moveSpeed = 0.1f;
+            transform.position += transform.forward * moveSpeed * 0.01f;
+           
+
+        
         }
         if (isRotation && looktarget != null)
         {
@@ -64,10 +70,13 @@ public class Human : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(angle), rotateSpeed);
         }
 
-        else
-        {
-           // anim.SetBool("Run", false);
-        }
+  
+    }
+
+
+    void Attack()
+    {
+        anim.SetTrigger("Attack");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -84,6 +93,14 @@ public class Human : MonoBehaviour
 
 
             playersc.Burn();
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            isDetectPlayer = false;
         }
     }
 
