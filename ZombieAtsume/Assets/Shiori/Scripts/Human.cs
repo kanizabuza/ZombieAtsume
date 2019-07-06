@@ -126,9 +126,7 @@ public class Human : MonoBehaviour
 
         if (other.tag == "attack")
         {
-            Debug.Log("Attack");
             int flag = playersc.Burn();
-            Debug.Log(flag + "Human");
             if (flag == 1)
             {
                 AnimCall();
