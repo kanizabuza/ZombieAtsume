@@ -11,7 +11,7 @@ public class Human : MonoBehaviour
     [SerializeField]
     private Transform bullet;
 
-    public Transform looktarget;
+    private Transform looktarget;
     public bool isDetectPlayer;
     public float moveSpeed = 0.1f;
     public float rotateSpeed = 0.001f;
@@ -120,10 +120,10 @@ public class Human : MonoBehaviour
 
         if (other.tag == "attack")
         {
-            Debug.Log("1");
+            //Debug.Log("1");
 
            
-            playersc.Burn();
+            //playersc.Burn();
         }
     }
 

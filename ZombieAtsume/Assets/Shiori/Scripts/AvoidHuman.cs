@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class AvoidHuman : MonoBehaviour
 {
-    public Transform looktarget;
+    private ChangeCharacter cChara;
+    private Transform looktarget;
     public bool isDetectPlayer;
     public float moveSpeed = 0.1f;
     public float rotateSpeed = 0.001f;
     private bool isMovement, isRotation;
     float avoidtime = 0f;
-    public Players playersc;
+    private Players playersc;
     private Vector3 angle;
-    public Animator anim;
+    private Animator anim;
     private Transform objtrans;
     public GameObject obj = null;
     private int moveflag = 1;
@@ -22,7 +23,10 @@ public class AvoidHuman : MonoBehaviour
         anim = GetComponent<Animator>();
         isMovement = false;
         isRotation = false;
-        
+
+        playersc = GameObject.FindGameObjectWithTag("Player").GetComponent<Players>();
+
+        cChara = GameObject.Find("ChangePlayer").GetComponent<ChangeCharacter>();
     }
 
     // Update is called once per frame
@@ -92,9 +96,12 @@ public class AvoidHuman : MonoBehaviour
         if (other.tag == "attack")
         {
            // Debug.Log("1");
-           
+            int flag = playersc.Burn();
 
-            playersc.Burn();
+            if (flag == 1)
+            {
+                Anim();
+            }
         }
     }
 
@@ -114,7 +121,12 @@ public class AvoidHuman : MonoBehaviour
         Debug.Log("ok");
         yield return new WaitForSeconds(2.5f);
         Debug.Log("ok!!");
-        Instantiate(obj, trans.position, Quaternion.identity);
+        GameObject clone = Instantiate(obj, trans.position, Quaternion.identity);
+        clone.GetComponent<Players>().enabled = false;
+        clone.tag = "Zombie";
+        clone.transform.GetChild(18).gameObject.GetComponent<Canvas>().enabled = false;
+        clone.GetComponent<HitBullet>().enabled = false;
+        cChara.AddList(clone);
     }
 
 

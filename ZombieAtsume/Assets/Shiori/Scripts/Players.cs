@@ -13,13 +13,13 @@ public class Players : MonoBehaviour
     float time = 0;
     private GameObject obj = null;
     private Transform desobject;
-    public GameObject Zombie;
+    //public GameObject Zombie;
     int attackflag = 0;
     public int destroyflag = 0;
     int burnflag = 0;
     Rigidbody rb;
     private Animator anim;
-    public AvoidHuman avoidhuman;
+    //public AvoidHuman avoidhuman;
     // Start is called before the first frame update
     void Start()
     {
@@ -84,19 +84,21 @@ public class Players : MonoBehaviour
     {
         obj = other.gameObject;
     }
-    public void Burn()
+    public int Burn()
     {
 
-
+        /*
         if (burnflag == 1 && attackflag == 1)
         {
            
 
             avoidhuman.Anim();
 
-        }
+        }*/
+        int tempflag = burnflag;
         burnflag = 0;
         attackflag = 0;
+        return tempflag;
 
     }
     private void FixedUpdate()
