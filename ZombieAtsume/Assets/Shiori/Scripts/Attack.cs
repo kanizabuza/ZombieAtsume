@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    Animator anim;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         
     }
 
@@ -15,4 +17,20 @@ public class Attack : MonoBehaviour
     {
         
     }
+    public void Call()
+    {
+        StartCoroutine("AttackCall");
+    }
+
+        private IEnumerator AttackCall()
+    {
+        anim.SetBool("Attack", true);
+        yield return new WaitForSeconds(5.0f);
+        anim.SetBool("Attack",false);
+        anim.SetBool("Idle", true);
+        yield return new WaitForSeconds(5.0f);
+        anim.SetBool("Idle", false);
+
+    }
 }
+
