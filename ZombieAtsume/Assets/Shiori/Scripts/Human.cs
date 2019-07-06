@@ -21,9 +21,9 @@ public class Human : MonoBehaviour
     private Attack attack;
     float maketime = 0f;
     float avoidtime = 0f;
-    public Players playersc;
+    private Players playersc;
     private Vector3 angle;
-    public Animator anim;
+    private Animator anim;
     private int attackflag = 0;
     private Transform objtrans;
     public GameObject obj = null;
@@ -35,7 +35,10 @@ public class Human : MonoBehaviour
         isMovement = false;
         isRotation = false;
         attack = GetComponent<Attack>();
-         cChara = GameObject.Find("ChangePlayer").GetComponent<ChangeCharacter>();
+
+        playersc = GameObject.FindGameObjectWithTag("Player").GetComponent<Players>();
+
+        cChara = GameObject.Find("ChangePlayer").GetComponent<ChangeCharacter>();
 
     }
 
@@ -126,9 +129,9 @@ public class Human : MonoBehaviour
 
         if (other.tag == "attack")
         {
-            Debug.Log("Attack");
+            //Debug.Log("Attack");
             int flag = playersc.Burn();
-            Debug.Log(flag + "Human");
+            //Debug.Log(flag + "Human");
             if (flag == 1)
             {
                 AnimCall();
@@ -160,9 +163,9 @@ public class Human : MonoBehaviour
 
     IEnumerator Make(GameObject obj, Transform trans)
     {
-        Debug.Log("ok");
+        //Debug.Log("ok");
         yield return new WaitForSeconds(2.5f);
-        Debug.Log("ok!!");
+        //Debug.Log("ok!!");
         GameObject clone = Instantiate(obj, trans.position, Quaternion.identity);
         clone.GetComponent<Players>().enabled = false;
         clone.tag = "Zombie";
