@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class PlayerTest : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class PlayerTest : MonoBehaviour
     private Slider hpSlider;
 
     private void Start() {
-        hpSlider = hpUI.transform.Find("Slider").GetComponent<Slider>();
+        hpSlider = GetComponentInChildren<Slider>();
     }
 
     void Update() {
@@ -21,6 +22,20 @@ public class PlayerTest : MonoBehaviour
 
     public void ChangeControl(bool flag) {
         isControl = flag;
-        this.GetComponent<MeshRenderer>().enabled = flag;
+        this.GetComponent<Animator>().enabled = flag;
+
+        //navemeshagent add
+        //players.enabled false
+        this.GetComponent<Players>().enabled = flag;
+        if (flag)
+        {
+            this.GetComponent<NavMeshAgent>().enabled = false;
+            this.GetComponent<FollowZombie>().enabled = false;
+        }
+        else
+        {
+            this.GetComponent<NavMeshAgent>().enabled = true;
+            this.GetComponent<FollowZombie>().enabled = true;
+        }
     }
 }

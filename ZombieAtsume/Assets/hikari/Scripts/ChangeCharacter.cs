@@ -15,7 +15,7 @@ public class ChangeCharacter : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetKeyDown("q")){
+        if (Input.GetKeyDown(KeyCode.Space)){
             ChangePlayer(nowPlayer);
         }
     }
@@ -35,10 +35,12 @@ public class ChangeCharacter : MonoBehaviour
             if(i == nextPlayer)
             {
                 flag = true;
+                charaLists[i].tag = "Player";
             }
             else
             {
                 flag = false;
+                charaLists[i].tag = "Zombie";
             }
 
             //変換処理
