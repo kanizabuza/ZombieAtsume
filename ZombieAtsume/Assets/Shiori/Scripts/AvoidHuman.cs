@@ -54,6 +54,7 @@ public class AvoidHuman : MonoBehaviour
                 moveSpeed = 0.1f;
                 transform.position += transform.forward * moveSpeed * 0.01f;
                 isDetectPlayer = false;
+                looktarget = null;
 
             }
         }
