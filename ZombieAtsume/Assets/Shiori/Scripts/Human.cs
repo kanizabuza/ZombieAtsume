@@ -28,6 +28,7 @@ public class Human : MonoBehaviour
     private Transform objtrans;
     public GameObject obj = null;
     private int moveflag = 1;
+    private GameObject soundSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +38,7 @@ public class Human : MonoBehaviour
         attack = GetComponent<Attack>();
 
         playersc = GameObject.FindGameObjectWithTag("Player").GetComponent<Players>();
-
+        soundSource = GameObject.Find("SoundSource");
         cChara = GameObject.Find("ChangePlayer").GetComponent<ChangeCharacter>();
 
     }
@@ -152,7 +153,7 @@ public class Human : MonoBehaviour
 
     public void AnimCall()
     {
-
+        soundSource.GetComponent<humanSound>().soundPlay();
         anim.SetBool("Down", true);
         objtrans = this.gameObject.transform;
         Destroy(this.gameObject, 3);
