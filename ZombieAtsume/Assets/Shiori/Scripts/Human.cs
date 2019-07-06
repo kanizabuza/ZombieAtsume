@@ -101,7 +101,7 @@ public class Human : MonoBehaviour
 
             //anim.SetBool("Run", false);
             moveSpeed = 0.1f;
-            transform.position += transform.forward * moveSpeed * 0.01f;
+           // transform.position += transform.forward * moveSpeed * 0.01f;
         
 
 
