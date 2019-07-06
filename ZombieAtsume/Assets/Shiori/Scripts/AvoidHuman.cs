@@ -97,7 +97,7 @@ public class AvoidHuman : MonoBehaviour
         {
            // Debug.Log("1");
             int flag = playersc.Burn();
-
+            Debug.Log(flag + "avoid");
             if (flag == 1)
             {
                 Anim();
@@ -118,9 +118,9 @@ public class AvoidHuman : MonoBehaviour
 
    IEnumerator Make(GameObject obj,Transform trans)
     {
-        Debug.Log("ok");
+      //  Debug.Log("ok");
         yield return new WaitForSeconds(2.5f);
-        Debug.Log("ok!!");
+       // Debug.Log("ok!!");
         GameObject clone = Instantiate(obj, trans.position, Quaternion.identity);
         clone.GetComponent<Players>().enabled = false;
         clone.tag = "Zombie";

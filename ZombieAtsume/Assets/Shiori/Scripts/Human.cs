@@ -11,6 +11,8 @@ public class Human : MonoBehaviour
     [SerializeField]
     private Transform bullet;
 
+    private ChangeCharacter cChara;
+
     private Transform looktarget;
     public bool isDetectPlayer;
     public float moveSpeed = 0.1f;
@@ -23,6 +25,9 @@ public class Human : MonoBehaviour
     private Vector3 angle;
     public Animator anim;
     private int attackflag = 0;
+    private Transform objtrans;
+    public GameObject obj = null;
+    private int moveflag = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +35,7 @@ public class Human : MonoBehaviour
         isMovement = false;
         isRotation = false;
         attack = GetComponent<Attack>();
+         cChara = GameObject.Find("ChangePlayer").GetComponent<ChangeCharacter>();
 
     }
 
@@ -120,18 +126,17 @@ public class Human : MonoBehaviour
 
         if (other.tag == "attack")
         {
-            //Debug.Log("1");
-
-           
-            //playersc.Burn();
+            Debug.Log("Attack");
+            int flag = playersc.Burn();
+            Debug.Log(flag + "Human");
+            if (flag == 1)
+            {
+                AnimCall();
+            }
         }
     }
 
-    public void Anim()
-    {
-        anim.SetBool("Down", true);
-        Destroy(this.gameObject, 3);
-    }
+
 
     public void OnTriggerExit(Collider other)
     {
@@ -140,6 +145,30 @@ public class Human : MonoBehaviour
             isDetectPlayer = false;
             looktarget = null;
         }
+    }
+
+    public void AnimCall()
+    {
+
+        anim.SetBool("Down", true);
+        objtrans = this.gameObject.transform;
+        Destroy(this.gameObject, 3);
+        moveflag = 0;
+        StartCoroutine(Make(obj, objtrans.transform));
+        //Instantiate(obj, objtrans.transform.position, Quaternion.identity);
+    }
+
+    IEnumerator Make(GameObject obj, Transform trans)
+    {
+        Debug.Log("ok");
+        yield return new WaitForSeconds(2.5f);
+        Debug.Log("ok!!");
+        GameObject clone = Instantiate(obj, trans.position, Quaternion.identity);
+        clone.GetComponent<Players>().enabled = false;
+        clone.tag = "Zombie";
+        clone.transform.GetChild(18).gameObject.GetComponent<Canvas>().enabled = false;
+        clone.GetComponent<HitBullet>().enabled = false;
+        cChara.AddList(clone);
     }
 
     void Shot()
